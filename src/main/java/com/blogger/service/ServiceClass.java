@@ -16,5 +16,9 @@ public class ServiceClass {
 		manager.create(user);
 		
 	}
+
+	public String login(User user) {
+		return manager.login(user);
+	}
 	
 }

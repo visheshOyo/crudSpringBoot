@@ -22,5 +22,15 @@ public class ManagerClass {
 			repo.save(user);
 		}
 	}
+	public String login(User user) {
+		User u  = repo.findByUsername(user.getName());
+		String password = user.getPassword() + salt;
+		if(password.equals(u.getPassword())) {
+			return "Welcome" + u.getName();
+		}
+		else {
+			return "wrong username or password";
+		}
+	}
 
 }

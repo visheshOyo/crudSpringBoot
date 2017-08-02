@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blogger.entity.User;
+import com.blogger.request.LoginRequest;
 import com.blogger.request.SignUpRequest;
 import com.blogger.service.ServiceClass;
 
 @SuppressWarnings("unused")
 @RestController
-@RequestMapping("/signup")
 public class BloggerApplicationController {
 	
 	@Autowired
 	private ServiceClass service;  
 	
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	/*public String create(@RequestParam("username") String username,
 						@RequestParam("password") String password, 
 						@RequestParam("email") String email) {
@@ -33,10 +33,23 @@ public class BloggerApplicationController {
 		return "done";
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(@RequestBody LoginRequest request) {
+		User user = loginRequestToEntity(request);
+		return service.login(user);
+	}
+	
 	private User requestToEntity(SignUpRequest request) {
 		User user = new User();
 		user.setName(request.getUsername());
 		user.setEmail(request.getEmail());
+		user.setPassword(request.getPassword());
+		return user;
+	}
+	
+	private User loginRequestToEntity(LoginRequest request) {
+		User user = new User();
+		user.setName(request.getUsername());
 		user.setPassword(request.getPassword());
 		return user;
 	}
