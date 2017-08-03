@@ -1,6 +1,5 @@
 package com.blogger.entity;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -13,11 +12,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
+	private Integer id;
 
 	@Column(name = "username")
 	private String username;
@@ -70,12 +69,12 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
-	public Integer getUserId() {
-		return this.userId;
+	public Integer getId() {
+		return this.id;
 	}
 	
-	public User setUserId(Integer userId) {
-		this.userId = userId;
+	public User setId(Integer id) {
+		this.id = id;
 		return this;
 	}
 
