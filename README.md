@@ -18,4 +18,4 @@ Implementation of CRUD operations using JPA and PostgreSQL database.
 * **/add_to_network:** It is a post request that accepts follower_id and following_id and creates a new entry in "follower" table if not exists.
 * **/find_followers:** It accepts a user_id and returns a list of followers.
 * **/create_post:** It accepts user_id and post message and creates a new entry in "posts" table.
-* **/get_post:** It is get request that accepts user_id as path variable as return posts of all the users user is following sorted in descending order by creation time.
+* **/get_post:** It is get request that accepts user_id as path variable as return posts of all the users followed by user sorted in descending order by creation time.
