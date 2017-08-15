@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,6 @@ import com.blogger.request.SearchRequest;
 import com.blogger.request.SignUpRequest;
 import com.blogger.request.addRequest;
 import com.blogger.request.getFollowersRequest;
-import com.blogger.request.getPostRequest;
 import com.blogger.request.newPostRequest;
 import com.blogger.response.SearchResponse;
 import com.blogger.service.ServiceClass;
@@ -78,10 +78,9 @@ public class BloggerApplicationController {
 		return "done";
 	}
 	
-	@RequestMapping(value = "/get_post", method = RequestMethod.POST)
-	public List<Post> getPost(@RequestBody getPostRequest request) {
-		Integer userId = request.getId();
-		return service.getPost(userId);
+	@RequestMapping(value = "/get_post/{id}", method = RequestMethod.GET)
+	public List<Post> getPost(@PathVariable Integer id){
+		return service.getPost(id);
 	}
 
 	private List<SearchResponse> searchEntityToResponse(List<User> search) {
